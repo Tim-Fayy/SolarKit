@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Solar Kit — Portable Balcony Solar Panel</title>
+  <meta name="description" content="Solar Kit — a portable solar panel you can mount directly on your balcony. Get early access." />
+  <style>
+    :root{
+      --bg:#0f1724; --card:#0b1220; --accent:#ffcc33; --muted:#9aa4b2; --glass: rgba(255,255,255,0.04);
+      --maxw:1100px;
+      --radius:14px;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    *{box-sizing:border-box}
+    body{margin:0; background:linear-gradient(180deg,#071028 0%, #071827 60%); color:#e6eef8; -webkit-font-smoothing:antialiased;}
+    .wrap{max-width:var(--maxw); margin:48px auto; padding:28px;}
+    .hero{display:grid; grid-template-columns: 1fr 460px; gap:28px; align-items:center}
+    header small{display:block;color:var(--accent); font-weight:700; letter-spacing:0.08em}
+    h1{font-size:32px;margin:8px 0 12px; line-height:1.05}
+    p.lead{color:white; margin:0 0 18px; font-size:15px}
+
+    /* mock render card */
+    .mock{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border-radius:18px; padding:22px; box-shadow:0 8px 30px rgba(2,6,23,0.6);}
+    .panel-stage{background:linear-gradient(180deg,#0b1a2b 0%, #071226 100%); padding:20px; border-radius:12px; display:flex; justify-content:center; align-items:center}
+
+    /* SVG sizing */
+    .mock svg{width:100%; height:auto; display:block}
+
+    /* Details & UVP */
+    .uvp{background:var(--glass); padding:18px; border-radius:12px; margin-top:14px}
+    .features{display:flex; gap:10px; margin-top:14px}
+    .feature{flex:1; background:rgba(255,255,255,0.02); padding:12px;border-radius:10px}
+    .feature h4{margin:0 0 6px;font-size:14px}
+    .feature p{margin:0; color:var(--muted); font-size:13px}
+
+    /* CTA */
+    .cta{margin-top:18px; display:flex; gap:12px; align-items:center}
+    .btn-primary{background:linear-gradient(90deg,var(--accent),#ffb84d); color:#041226; border:none; padding:12px 18px; border-radius:12px; font-weight:700; cursor:pointer; box-shadow:0 8px 20px rgba(255,204,51,0.12)}
+    .btn-ghost{background:transparent; color:var(--accent); border:1px solid rgba(255,204,51,0.12); padding:10px 14px; border-radius:10px; cursor:pointer}
+
+    form{display:flex; gap:8px}
+    input[type=email]{padding:10px 12px; border-radius:10px; border:1px solid rgba(255,255,255,0.06); background:transparent; color:inherit; min-width:220px}
+
+    footer{margin-top:26px; color:var(--muted); font-size:13px}
+
+    /* Responsive */
+    @media (max-width:900px){
+      .hero{grid-template-columns:1fr;}
+      .mock{order: -1}
+    }
+
+    /* small extras */
+    .badge{display:inline-block; padding:6px 10px; background:rgba(255,255,255,0.03); border-radius:999px; color:var(--accent); font-weight:700; font-size:12px}
+
+    /* success toast */
+    .toast{position:fixed; right:20px; bottom:20px; background:#061724; border:1px solid rgba(255,255,255,0.04); padding:12px 16px; border-radius:10px; box-shadow:0 10px 30px rgba(2,6,23,0.8); display:none}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <div class="hero">
+      <section>
+        <header>
+          <small>NEW — Portable balcony solar</small>
+          <h1>Generate your own clean power in minutes</h1>
+        </header>
+        <p class="lead">no roof access, no landlord approval, just simple balcony mounting.</p>
+
+        <div class="uvp">
+          <p style="margin:0;color:var(--muted)">Turn your balcony into a small clean-energy hub. <strong>Solar Kit</strong> is a lightweight, secure solar panel kit designed for easy mounting on most balcony railings — no roof access or installers required.</p>
+        </div>
+
+        <div class="features" aria-hidden="false">
+          <div class="feature">
+            <h4>Easy to mount</h4>
+            <p>Adjustable clamps fit most balcony rails — install with two people in under 15 minutes.</p>
+          </div>
+          <div class="feature">
+            <h4>Portable & lightweight</h4>
+            <p>Foldable frame and carry handles — take it down when you move or store it away.</p>
+          </div>
+          <div class="feature">
+            <h4>Smart-ready</h4>
+            <p>Includes a compact inverter/charge-controller compatible with 12V battery packs and USB outputs.</p>
+          </div>
+        </div>
+
+        <div class="cta">
+          <form id="waitlist" onsubmit="event.preventDefault(); joinWaitlist();">
+            <input type="email" id="email" placeholder="Your email — join early access" aria-label="Email address" required>
+            <button class="btn-primary" type="submit">Get Early Access</button>
+          </form>
+          <button class="btn-ghost" onclick="learnMore()">See specs</button>
+        </div>
+
+        <footer>
+          <span class="badge">Limited pre-orders</span>
+          <span style="margin-left:12px">Sign up now — receive a 10% early-backer discount and first shipping priority.</span>
+        </footer>
+      </section>
+
+      <aside class="mock" aria-hidden="false">
+        <div class="panel-stage">
+          <img src="solar_panel.png" alt="Solar Kit product mockup" style="max-width:100%; border-radius:12px; box-shadow:0 8px 30px rgba(2,6,23,0.6);" />
+        </div>
+      </aside>
+    </div>
+
+    <!-- details section -->
+    <section style="margin-top:28px; background:rgba(255,255,255,0.02); padding:22px; border-radius:12px">
+      <h3 style="margin:0 0 8px">What problem does Solar Kit solve?</h3>
+      <p style="margin:0; color:var(--muted)">Many city-dwellers want to reduce electricity bills and their carbon footprint but lack access to roofs or permanent installations. Solar Kit gives renters and apartment owners a simple, reversible way to harvest solar energy from balconies — powering lights, charging devices, or top-up batteries for small appliances.</p>
+
+      <h3 style="margin-top:16px;">Who is it for?</h3>
+      <p style="margin:0;color:var(--muted)">People living in apartments with balcony space, tiny-home owners, students, and eco-conscious city residents who want an affordable, portable solar option without drilling or roof access.</p>
+
+      <h3 style="margin-top:16px;">Quick specs</h3>
+      <ul style="color:var(--muted); margin:8px 0 0 18px">
+        <li>Peak power: up to 200W per panel (nominal 160W typical)</li>
+        <li>Mounting: adjustable clamp system for common rail sizes</li>
+        <li>Outputs: USB-A/C (fast-charge), 12V output, optional inverter for AC appliances</li>
+        <li>Material: tempered glass solar cells, anodized aluminum frame</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <div class="toast" id="toast">You're on the early list — we'll email you confirmation.</div>
+
+  <script>
+    function joinWaitlist(){
+      const email = document.getElementById('email').value;
+      if(!email) return;
+      // In a real product, you'd send this to your backend. Here we show a friendly toast.
+      const toast = document.getElementById('toast');
+      toast.style.display = 'block';
+      setTimeout(()=>{ toast.style.display = 'none'; }, 4200);
+
+      // simple local visual feedback
+      document.querySelector('.btn-primary').innerText = 'Thanks — check your email';
+      document.querySelector('.btn-primary').disabled = true;
+    }
+    function learnMore(){
+      alert('Detailed specs: 200W peak, foldable frame, clamps for rails, includes inverter/charge controller (preview mode).');
+    }
+  </script>
+
+  <script>
+  (function(h,o,t,j,a,r){
+    h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+    h._hjSettings={hjid:YOUR_ID,hjsv:6};
+    a=o.getElementsByTagName('head')[0];
+    r=o.createElement('script');r.async=1;
+    r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+    a.appendChild(r);
+  })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+</script>
+
+</body>
+</html>
